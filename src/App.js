@@ -39,9 +39,9 @@ class App extends Component
     people[personIndex] = person;
 
     this.setState(
-      {
-        people: people
-      }
+        {
+            people: people
+        }
     );
   } 
 
