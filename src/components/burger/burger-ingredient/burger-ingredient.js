@@ -35,9 +35,10 @@ class BurgerIngredient extends Component
                 break;
             default:
                 ingredient = null;
-
-            return ingredient;
+                break;
         }
+
+        return ingredient;
     }
 }
 
