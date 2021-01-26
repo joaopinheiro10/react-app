@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-import Aux from '../../hoc/Aux';
+import Aux from '../aux/Aux';
 import classes from './layout.css';
-import Toolbar from '../navigation/toolbar/toolbar';
-import SideDrawer from '../navigation/side-drawer/side-drawer';
+import Toolbar from '../../components/navigation/toolbar/toolbar';
+import SideDrawer from '../../components/navigation/side-drawer/side-drawer';
 
 
 class Layout extends Component
 {
     state = {
-        showSideDrawer: true
+        showSideDrawer: false
     };
 
     sideDrawerClosedHandler = () =>
@@ -19,11 +19,18 @@ class Layout extends Component
         });
     }
 
+    sideDrawerHandler = () =>
+    {
+        this.setState((prevState) => {
+            return {showSideDrawer: !prevState.showSideDrawer};
+        });
+    }
+
     render()
     {
         return (
             <Aux>
-                <Toolbar />
+                <Toolbar drawerToggleClick={this.sideDrawerHandler}/>
                 <SideDrawer open={this.state.showSideDrawer} 
                     closed={this.sideDrawerClosedHandler}/>
                 <main className={classes.Content}>
