@@ -106,39 +106,21 @@ class BurguerBuilder extends Component
 
     purchaseContinueHandler = () =>
     {
-        this.setState({
-            loading: true
-        });
-        // alert('You continue');
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Pinhas',
-                address: {
-                    street :'test street, 1',
-                    zipCode: '1234',
-                    country: 'Portugal'
-                },
-                email: 'test@test.com',
-            },
-            deliveryMethod: 'fastest'
-        };
+        const queryParams = [];
 
-        axios.post('/orders.json', order)
-            .then(response =>
-            {
-                this.setState({
-                    loading: false,
-                    orderNowClicked: false
-                });
-            })
-            .catch(error => {
-                this.setState({
-                    loading: false,
-                    orderNowClicked: false
-                });
-            });
+        for (let i in this.state.ingredients)
+        {
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+        }
+
+        queryParams.push('price=' + this.state.totalPrice);
+
+        const queryString = queryParams.join('&');
+
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        });
     }
 
     componentDidMount () 
