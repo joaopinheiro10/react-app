@@ -1,5 +1,4 @@
-.Button 
-{
+.Button {
     background-color: transparent;
     border: none;
     color: white;
@@ -11,18 +10,20 @@
     font-weight: bold;
 }
 
-.Button:first-of-type 
-{
+.Button:first-of-type {
     margin-left: 0;
     padding-left: 0;
 }
 
-.Success 
-{
+.Button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.Success {
     color: #5C9210;
 }
 
-.Danger 
-{
+.Danger {
     color: #944317;
 }
